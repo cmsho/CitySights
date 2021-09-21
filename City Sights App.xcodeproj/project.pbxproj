@@ -7,19 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A802125F26F95B720056C17D /* City_Sights_App.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802125E26F95B720056C17D /* City_Sights_App.swift */; };
-		A802126126F95B720056C17D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802126026F95B720056C17D /* ContentView.swift */; };
+		A802125F26F95B720056C17D /* CitySightsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802125E26F95B720056C17D /* CitySightsApp.swift */; };
+		A802126126F95B720056C17D /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802126026F95B720056C17D /* LaunchView.swift */; };
 		A802126326F95B720056C17D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A802126226F95B720056C17D /* Assets.xcassets */; };
 		A802126626F95B720056C17D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A802126526F95B720056C17D /* Preview Assets.xcassets */; };
+		A802127126F95DD50056C17D /* ContentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A802127026F95DD50056C17D /* ContentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A802125B26F95B720056C17D /* City Sights App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "City Sights App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A802125E26F95B720056C17D /* City_Sights_App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = City_Sights_App.swift; sourceTree = "<group>"; };
-		A802126026F95B720056C17D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A802125E26F95B720056C17D /* CitySightsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySightsApp.swift; sourceTree = "<group>"; };
+		A802126026F95B720056C17D /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		A802126226F95B720056C17D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A802126526F95B720056C17D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A802126726F95B720056C17D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A802127026F95DD50056C17D /* ContentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +54,7 @@
 		A802125D26F95B720056C17D /* City Sights App */ = {
 			isa = PBXGroup;
 			children = (
-				A802125E26F95B720056C17D /* City_Sights_App.swift */,
+				A802125E26F95B720056C17D /* CitySightsApp.swift */,
 				A802126F26F95BDE0056C17D /* Views */,
 				A802126E26F95BD90056C17D /* ViewModels */,
 				A802126D26F95BD00056C17D /* Models */,
@@ -81,6 +83,7 @@
 		A802126E26F95BD90056C17D /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				A802127026F95DD50056C17D /* ContentModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -88,7 +91,7 @@
 		A802126F26F95BDE0056C17D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A802126026F95B720056C17D /* ContentView.swift */,
+				A802126026F95B720056C17D /* LaunchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -162,8 +165,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A802126126F95B720056C17D /* ContentView.swift in Sources */,
-				A802125F26F95B720056C17D /* City_Sights_App.swift in Sources */,
+				A802126126F95B720056C17D /* LaunchView.swift in Sources */,
+				A802125F26F95B720056C17D /* CitySightsApp.swift in Sources */,
+				A802127126F95DD50056C17D /* ContentModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
