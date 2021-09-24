@@ -10,6 +10,9 @@ import CoreLocation
 
 class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
     
+    @Published var restaurants = [Business]()
+    @Published var sights = [Business]()
+    
     var locationManager = CLLocationManager()
     
     // Since ContentModel conforms to NSObject, we have to override the NSObject init() function
@@ -56,8 +59,8 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
             locationManager.stopUpdatingLocation()
             
             // If we have coordinates of the user, send into Yelp API
-            // getBusinesses(category: "arts", location: userLocation!)
-            getBusinesses(category: "restaurants", location: userLocation!)
+            getBusinesses(category: Constants.sightsKey, location: userLocation!)
+            getBusinesses(category: Constants.restaurantsKey, location: userLocation!)
         }
         
         // TODO: If we have the coordinates of the user, send into Yelp API
@@ -74,7 +77,7 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
         let url = URL(string: urlString)
          */
         
-        var urlComponents = URLComponents(string: "https://api.yelp.com/v3/businesses/search")
+        var urlComponents = URLComponents(string: Constants.apiUrl)
         urlComponents?.queryItems = [
             URLQueryItem(name: "latitude", value: String(location.coordinate.latitude)),
             URLQueryItem(name: "longitude", value: String(location.coordinate.longitude)),
@@ -89,7 +92,7 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
             // Create URL Request
             var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
             request.httpMethod = "GET"
-            request.addValue("Bearer sQrGriAv0XYndmk8pL_AbL3xk5nffZpxCoJhyZX3Yy_mK-M1uRANqK8p81jCcaD5SHbVnLHTPQ-tNLuZYy4jXsGrFHR5goTPWN34md16fp16C7RKCMvWWgknlGxKYXYx", forHTTPHeaderField: "Authorization")
+            request.addValue("Bearer \(Constants.apiKey)", forHTTPHeaderField: "Authorization")
             
             // Get URLSession
             let session = URLSession.shared
@@ -99,7 +102,30 @@ class ContentModel: NSObject, CLLocationManagerDelegate, ObservableObject {
                 
                 // Check that there isn't an error
                 if error == nil {
-                    print(response)
+                
+                    do {
+                        // Parse json
+                        let decoder = JSONDecoder()
+                        let result = try decoder.decode(BusinessSearch.self, from: data!)
+                        
+                        DispatchQueue.main.async {
+                            
+                            // Assign results to the appropriate property
+                            switch category {
+                            case Constants.sightsKey:
+                                self.sights = result.businesses
+                            case Constants.restaurantsKey:
+                                self.restaurants = result.businesses
+                            default:
+                                break
+                            }
+                        }
+                        
+                    }
+                    catch {
+                        print(error)
+                    }
+
                 }
                 
                 
