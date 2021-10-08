@@ -48,7 +48,7 @@ struct BusinessRow: View {
                 
             }
             
-            Divider()
+            DashedDivider()
         }
         .foregroundColor(.black)
     }
